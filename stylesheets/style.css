@@ -1,0 +1,615 @@
+@import url(/Generica.otf);
+@font-face{
+    font-family: Generica;
+    src:  url(/Generica.otf)
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Generica;    
+    letter-spacing: 1px;
+}
+/* Animations and PreLoader */
+@keyframes transitionin{
+    from{
+        opacity: 0.1;
+        transform: rotateX(-10deg);
+    }
+    to{
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+
+
+}
+@keyframes gone {
+    100%{
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+.preloader{
+    position: fixed;
+    top: 0;
+    left: 0;    
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    animation: none;
+}
+
+.preloader img{
+    height:90vh;
+    width: auto;
+}
+
+.disappear{
+    animation: gone 1s forwards;
+    transition: ease 1s;
+}
+
+
+
+/* ----------------------------------Headings---------------------------- */
+
+h2{
+    font-weight: 600;
+    padding: 1rem;
+    border-bottom: 1px solid black;
+    font-size: 36px;
+}
+h3{
+    font-weight: 545;
+    font-size: 30px;
+}
+h4{
+    font-weight: normal;
+    font-size:  26px;
+}
+h5{
+    font-weight: normal;
+    font-size: 20px;
+}
+
+
+/* Navigation Bar, Banner and Background */
+    body{
+        min-height: 100%;
+        /* background-image: url(https://i.gifer.com/Cal.gif); */
+        background-image: url(../Images/the-blowup-K6fYXynxZYY-unsplash.jpg);   
+        background-size: cover;
+        background-attachment: fixed;
+        z-index: -1;
+        animation: transitionin 1s;
+        overflow: auto;
+    }
+    :root{
+        --nav-background:rgba(0,0,0,.6);
+    }
+    
+    header{
+        min-height: 10%;
+        max-height: 20%; ;
+        background-color: var(--nav-background);
+        position: fixed;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        z-index: 5;
+    }
+    
+    img{
+        margin: 10px;
+    }
+    
+    nav {
+        position: absolute;
+        background-color: var(--nav-background);
+        width: 100%;
+        top:100%;   
+        transform: scale(1,0);
+        transform-origin: top;
+        transition: transform 200ms ease-in-out;
+    }
+    
+    nav ul{
+        margin-left:10px;
+        list-style-type: none;
+    }
+    
+    nav li{
+        margin-bottom: 10px;
+        font-size: 18px;
+        text-transform: uppercase;
+        width: 95%;
+        padding: 5px;
+        position: relative;
+
+    }
+    
+    nav li a{
+        text-decoration: none;
+        color:white;
+        opacity: 0;
+        transition: opacity 50ms ease-in-out;
+    }
+    
+    nav li:hover{
+        background-color:rgba(250,250,250,.1);
+        border-radius: 5px;
+        transition: transform 200ms ease-in-out;
+    }
+    
+    .nav-toggle:checked ~ nav{
+        transform: scale(1,1);
+    }
+    
+    .nav-toggle:checked ~ nav a,.about-label-toggle:checked ~ i, .register-label-toggle:checked ~ i, .committee-label-toggle:checked ~ i{
+        opacity: 1;
+        transition: opacity 250ms ease-in-out 250ms;
+    }
+
+    .nav-toggle{
+        display: none;
+    }
+    
+    .logo{
+        font-size: large;
+        font-weight: 600;
+        margin-left: 10px;
+        background-image: url(../Images/jmun-logo-official.png);
+        background-size: cover;
+        width: 10rem;
+        height: 6rem;
+        margin: 10px;
+        left: 20px;
+    }
+    .nav-label-toggle{
+        margin-right: 10px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+        width: 30px;
+    }
+    
+    
+    .nav-label-toggle span{
+        background-color: white;
+        height: 5px;
+        width: 100%;
+        margin: 2px 0;
+        border-radius: 5px;
+    }
+    
+    .about,.committee,.register{
+        position: relative;
+        transform: scale(0,0);
+        transform-origin: top;
+        /* display: none; */
+        height: 0;
+        width: 0;
+        opacity: 0;
+    }
+
+    nav li ul li{
+        margin-top: 10px;
+        width: fit-content;
+        /* display: none; */
+    }
+    
+    .about-toggle:checked ~ .about,.committee-toggle:checked ~ .committee,
+    .register-toggle:checked ~ .register{
+        transform: scale(1,1);
+        width: max-content;
+        height: max-content; 
+        /* display: block; */
+        opacity: 1;
+        transition: 250ms all ease-in-out 100ms;
+    }
+
+     .about-toggle:checked ~ .about a,.committee-toggle:checked ~ .committee a,
+    .register-toggle:checked ~ .register a{
+        opacity: 1;
+        transition: opacity 150ms ease-in-out 250ms;
+     } 
+
+     .about-label-toggle, .register-label-toggle, .committee-label-toggle{
+        margin-left: 50%;
+    } 
+    
+    nav li input{
+        display: none;
+    }
+    
+    nav li label{
+        position: absolute;
+        right: 0;
+    }
+    
+    @media (min-width:768px){
+        .nav-label-toggle{
+            display: none;
+        }
+    
+        nav{
+          all: unset;
+          display: inline;
+          width: auto;
+          background-color: transparent;
+          position: relative;
+        }
+    
+        nav ul{
+            display: flex;
+            margin-right: 3rem;
+            top:20px;
+        }
+    
+        nav li{
+            margin: 5px;
+            position: relative;
+        }
+        nav li a{
+            opacity: 1;
+        }
+        nav li label{
+            display: none;
+        }
+    
+        nav li ul{
+            all: unset;
+            position: absolute;
+        }
+        nav li ul li{
+            width:max-content;
+        }
+    
+        nav .drop:hover ul{
+            transform: scale(1,1);
+            transform: translate(-6rem,2rem);
+            transition: 150ms all ease-in-out 250;
+            width: fit-content;
+            height: fit-content;
+            border-radius: 10px;
+            background-color: rgba(250, 250, 250, .2);
+        }
+    
+        .about,.committee,.register{
+            all: unset;
+            transform:scale(0,0);
+            transform-origin: top;
+            transition: 250ms all ease-in-out;
+            width: 0;
+            height: 0;
+            position: absolute;
+            /* background-color: rgb(0,0,0,.6); */
+        }
+    }
+/* Banner Styling */
+
+
+.hbox {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 85vh;
+    flex-wrap: wrap-reverse;
+}
+.homelogo{
+    max-width:16rem;
+    max-height: 14rem;
+}
+
+.jmun{
+    color: white;
+    font-size: calc(1.5vw + .5rem);
+    font-weight: normal;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.container2 {
+    max-height: fit-content;
+    padding-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:10px;
+}
+  .container2 p {
+    font-size: calc(1.5vw + .5rem);
+    font-weight: normal;
+    padding: 0px;
+    font-weight: bold;
+    overflow: hidden;
+  }
+  .container2 p span.typed-text {
+    color: white;
+  }
+  
+  .container2 p span.cursor.typing {
+    animation: none;
+  }
+
+  .home-letter{
+      padding-left: 18vh;
+      padding-right: 18vh;
+      padding-top: 6vh;
+  }
+  .home-letter p{
+    text-align: justify;
+    font-size: 1.5em;
+  }
+  .sign{
+      display: flex;
+      flex-direction: column;
+      justify-content: right;
+      align-items: flex-end;
+  }
+.sign img{
+     max-width: 200px;
+ }
+.letter-container{
+    background-color: rgb(255, 255, 255);
+    padding: 1em;
+    height: max-content;
+}
+
+.letter-image{
+    width: 17rem;
+    height: 14rem;
+    float: left;
+    padding-right: 1rem;
+    
+}
+.letter{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap-reverse;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.letter-box{
+    margin: 20px 0;
+    padding: 1rem;
+    min-height: 20rem;    
+}
+.letter-box p{
+    text-align: justify;
+}
+.read-more-container{
+    font-size: 23px;
+}
+.read-more-btn{
+    color: black;
+   font-size: 18px;
+    font-weight: 600;
+    padding: .5rem .25rem;
+    margin: .5rem;
+    border: 2px solid black;
+    cursor: pointer;
+    transition: .2s ease-in;
+}
+.read-more-btn:hover{
+   background-color: rgba(0,0,0,.1);
+    
+}
+.read-more-text{
+    display: none;
+}
+.read-more-text--show{
+    display: inline;
+}
+
+
+@media (max-width:410px){
+    .letter-image{
+        width: 14rem;
+        height: 10rem;
+    }
+}
+
+.para{
+    width:fit-content;
+    font-size: 22px;
+    font-weight: normal;
+}
+.navbar  a{
+    text-decoration: none;
+    color:white;
+}
+#pageTitle{
+    text-align: center;
+}
+.jmun p{
+    align-content: center;
+}
+.countdown{align-self: center;}
+@media (max-width:768px){
+    .jmun{
+        font-size: calc(1.5vw + 1rem);;
+    }
+    .container2 p{
+        font-size: calc(1.5vw + 1rem);
+    }
+    .home-letter{
+        padding-left: 3vh;
+        padding-right: 3vh;
+        padding-top: 6vh;
+    }
+    .hbox{
+        align-items: center;
+        padding: 1rem;
+        justify-content: center;
+    }
+    .homelogo{
+        margin-top: 10rem;
+    }
+    .navbarlogo{
+        width:8rem;
+        height: 5rem;
+    }
+
+    .countdown li{
+        padding: 10px;
+    }
+}
+
+/* --------------------------------------Countdown----------------------------------------------- */
+.countdown{
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+}
+.countdown ul{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.countdown li {
+    font-size:calc(1.5vw + 0.5rem);
+    list-style-type: none;
+    padding: 10px;
+    text-transform: uppercase;   
+}
+
+
+.countdown li span {
+    display: block;
+    font-size: calc(1.5vw + .5rem);
+}
+@media all and (max-width: 768px) {
+    body{
+        overflow:auto;
+    }
+
+    .countdown li {
+        font-size: calc(1.125rem * var(--smaller));
+        padding: 8px;
+    }
+    
+    .countdown li span {
+        font-size: calc(3.375rem * var(--smaller));
+    }
+}
+/* ---------------------------------END--------------------------------------------------------------- */
+
+
+/* ----------------------------------------------------Footer Styling--------------------------------------------------------- */
+footer{
+    height: fit-content;
+    background-color: black;
+    padding: 30px;
+}
+.ftinfo{    
+    display: flex;
+    color: white;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.col{
+    background-color: black;
+    min-height:8rem;
+    width: 20rem;
+}
+.footer-heading{
+    padding:5px 0;
+    border-bottom:1px solid white;
+}
+.credits{
+    color: white;
+    border-top: 1px solid grey;
+    padding:5px 50px;  
+    margin-top: 3rem;
+}
+.space{
+    height:10vh;
+    background:transparent;
+}
+.col img{
+    width: 80px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.wrapper .button{
+    height: 30px;
+    width: 30px;
+    float: left;
+    margin: 0 5px;
+    background: #fff;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-out;
+}
+.wrapper .button:hover{
+    width: 125px;
+
+}
+.wrapper .button .icon{
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    color: black;
+    border-radius: 25px;
+    box-sizing: border-box;
+    line-height: 30px;
+    transition: all 0.3s ease-out;
+}
+.wrapper .button:nth-child(1):hover .icon{
+  background: #4267B2;
+}
+.wrapper .button:nth-child(2):hover .icon{
+  background: #1DA1F2;
+}
+.wrapper .button:nth-child(3):hover .icon{
+  background: #E1306C;
+}
+.wrapper .button .icon i{
+    font-size: 20px;
+    line-height: 30px;
+}
+.wrapper .button .icon:hover i{
+    color: #fff;
+}
+.wrapper .button span{
+    font-size: 17px;
+    color: black;
+    font-weight: 500;
+    line-height: 30px;
+    margin-left: 5px;
+    transition: all 0.3s ease-out;
+    width: fit-content;
+}
+.ftinfo a{
+    color:  white;
+    text-decoration: none;
+}
+.ftinfo a:hover{
+    font-size: 18px;
+    transition:  0.3s ease-out;
+}
+.ftinfo p{
+    line-height: 1.4;
+}
+.credits{
+    text-align: center;
+}
+
+
+
+
